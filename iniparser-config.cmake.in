@@ -1,0 +1,17 @@
+# paths
+@PACKAGE_INIT@
+set_and_check(INIPARSER_INCLUDE_DIRS "@PACKAGE_CMAKE_INSTALL_INCLUDEDIR@/@PROJECT_NAME@")
+
+# targets
+get_filename_component(_dir "${CMAKE_CURRENT_LIST_FILE}" PATH)
+if(NOT TARGET @PROJECT_NAME@)
+	include("${_dir}/@PROJECT_NAME@-targets.cmake")
+endif(NOT TARGET @PROJECT_NAME@)
+set(INIPARSER_LIBRARIES @PROJECT_NAME@)
+
+# feature summary
+include(FeatureSummary)
+set_package_properties(@PROJECT_NAME_UC@ PROPERTIES
+	DESCRIPTION "stand-alone ini parser library in ANSI C"
+	URL "http://ndevilla.free.fr/iniparser/"
+)
