@@ -1,7 +1,3 @@
-include_directories(
-    "${PROJECT_SOURCE_DIR}/src"
-)
-
 # iniexample
 add_executable(iniexample
     iniexample.c
@@ -9,8 +5,8 @@ add_executable(iniexample
 target_link_libraries(iniexample
 	${PROJECT_NAME}
 )
-add_test(iniexample
-	iniexample
+add_test(NAME ${PROJECT_NAME}_iniexample
+	COMMAND iniexample
 )
 
 # parse
@@ -20,19 +16,19 @@ add_executable(parse
 target_link_libraries(parse
 	${PROJECT_NAME}
 )
-add_test(NAME parse
+add_test(NAME ${PROJECT_NAME}_parse
 	COMMAND parse
 	WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )
-add_test(NAME parse-errors
+add_test(NAME ${PROJECT_NAME}_parse_errors
 	COMMAND parse twisted-errors.ini
 	WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )
-add_test(NAME parse-ofkey
+add_test(NAME ${PROJECT_NAME}_parse_ofkey
 	COMMAND parse twisted-ofkey.ini
 	WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )
-add_test(NAME parse-ofval
+add_test(NAME ${PROJECT_NAME}_parse_ofval
 	COMMAND parse twisted-ofval.ini
 	WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )

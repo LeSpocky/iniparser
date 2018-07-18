@@ -1,21 +1,18 @@
-project(iniparser C)
+cmake_minimum_required(VERSION 3.1)
 
-cmake_minimum_required(VERSION 2.8.8)
+project(iniparser
+	VERSION 3.2
+	LANGUAGES C
+)
+message(STATUS "iniparser_VERSION: ${iniparser_VERSION}")
 
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LC)
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UC)
-
-set(PACKAGE_MAJOR_VERSION "3")
-set(PACKAGE_MINOR_VERSION "2")
-set(PACKAGE_VERSION "${PACKAGE_MAJOR_VERSION}.${PACKAGE_MINOR_VERSION}")
 
 # includes
 include(CMakePackageConfigHelpers)	# cmake 2.8.8
 include(FeatureSummary)
 include(GNUInstallDirs)				# cmake 2.8.5
-
-# additional compiler flags
-add_definitions(-Wall -Wextra -Wcast-align -fPIC -ansi -std=c99 -pedantic)
 
 # options
 option(BUILD_SHARED_LIBS
@@ -28,6 +25,7 @@ add_subdirectory("src")
 
 # testing
 enable_testing()
+include(CTest)
 add_subdirectory("test")
 
 # cmake package stuff
