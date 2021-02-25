@@ -37,7 +37,6 @@ configure_package_config_file(${PROJECT_NAME_LC}-config.cmake.in
 )
 write_basic_package_version_file(
 	"${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME_LC}-config-version.cmake"
-	VERSION ${PACKAGE_VERSION}
 	COMPATIBILITY AnyNewerVersion
 )
 install(FILES
